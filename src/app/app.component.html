@@ -1,0 +1,35 @@
+<div class="my-6 text-center">
+  <a target="_blank" rel="noopener" href="https://nightwolf.dev">
+    <img class="inline" src="../assets/img/logo.png" alt="NightWolf Software Development">
+  </a>
+</div>
+
+<div class="mx-auto px-6 md:w-11/12 lg:w-9/12">
+
+  <h1 class="font-bold mb-6 text-2xl">Repos</h1>
+
+  <ng-container *ngIf="repos$ | async as repos; else loading">
+    <app-repo-list [repos]="repos"></app-repo-list>
+  </ng-container>
+
+  <hr class="h-px my-6 bg-gray-500 border-0">
+
+  <h1 class="font-bold mb-6 text-2xl">Featured Articles</h1>
+
+  <ng-container *ngIf="randomArticles$ | async as randomArticles; else loading">
+    <app-post-list [posts]="randomArticles"></app-post-list>
+  </ng-container>
+
+  <hr class="h-px my-6 bg-gray-500 border-0">
+
+  <h1 class="font-bold mb-6 text-2xl">Featured Projects</h1>
+
+  <ng-container *ngIf="randomProjects$ | async as randomProjects; else loading">
+    <app-post-list [posts]="randomProjects"></app-post-list>
+  </ng-container>
+
+</div>
+
+<ng-template #loading>
+  Loading...
+</ng-template>

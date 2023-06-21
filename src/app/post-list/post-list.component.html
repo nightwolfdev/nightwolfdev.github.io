@@ -1,0 +1,16 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
+  <div *ngFor="let post of posts" class="rounded duration-300 hover:-translate-y-1">
+    <a target="_blank" rel="noopener" [href]="post.link">
+      <img *ngIf="!post._embedded['wp:featuredmedia']" src="../assets/img/thumbnail.png" class="rounded h-72 w-full object-cover" [alt]="post.title.rendered">
+      <img *ngFor="let img of post._embedded['wp:featuredmedia']" [src]="img.source_url" class="rounded h-72 w-full object-cover" [alt]="post.title.rendered" />
+    </a>
+
+    <h2 class="duration-300 font-bold mt-4 text-lg text-sky-500 hover:text-sky-300">
+      <a target="_blank" rel="noopener" [href]="post.link">{{ post.title.rendered }}</a>
+    </h2>
+
+    <div [innerHTML]="post.excerpt.rendered" class="mb-2"></div>
+    
+    <span *ngFor="let tag of post.tagInfo" class="bg-slate-700 inline-block lowercase text-xs mr-2 px-2.5 py-0.5 rounded">{{ tag?.name }}</span>
+  </div>
+</div>
